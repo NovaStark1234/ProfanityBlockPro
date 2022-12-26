@@ -10,6 +10,8 @@ use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\utils\TextFormat as TF;
 
 class Loader extends PluginBase implements Listener {
+	private array $profanity;
+
 	protected function onEnable() : void{
 		$this->initProfanityList($this->getDataFolder());
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
