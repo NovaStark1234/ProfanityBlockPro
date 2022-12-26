@@ -13,13 +13,14 @@ class Loader extends PluginBase implements Listener {
 	private array $profanity;
 
 	protected function onEnable() : void{
-		$this->initProfanityList($this->getDataFolder());
+		$this->initProfanityList();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->profanity = $this->getProfanityList();
 
 	}
 
-	public function initProfanityList(string $dataFolder) : void{
+	public function initProfanityList() : void{
+		$dataFolder = $this->getDataFolder();
 		if(!file_exists($dataFolder . 'profanity.list')) {
 			$this->saveResource('profanity.list');
 		}
@@ -27,7 +28,7 @@ class Loader extends PluginBase implements Listener {
 
 	public function getProfanityList() : array{
 		$dataFolder = $this->getDataFolder();
-		$this->initProfanityList($dataFolder);
+		$this->initProfanityList();
 		$text = [];
 		$file = new \SplFileObject($dataFolder . "profanity.list");
 		while (!$file->eof()) {
