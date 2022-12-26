@@ -43,7 +43,7 @@ class Loader extends PluginBase implements Listener {
 		$text = strtolower(preg_replace('/\s/', '', implode(' ', $matches[0])));
 		foreach($this->profanity as $profanity) {
 			if(strpos($text, $profanity) !== false) {
-				$event->getPlayer()->sendMessage(TF::RED . 'You cannot chat that profanity word(s)!');
+				$event->getPlayer()->sendMessage(TF::RED . 'You cannot chat that profanity word!');
 				$event->cancel();
 				break;
 			}
